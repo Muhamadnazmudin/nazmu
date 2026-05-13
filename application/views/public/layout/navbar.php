@@ -3,7 +3,6 @@
 <div class="container">
 
 <!-- LOGO -->
-<!-- LOGO -->
 <a class="navbar-brand d-flex align-items-center"
 href="<?= base_url() ?>">
 
@@ -88,31 +87,43 @@ id="navbarNav">
 
 <ul class="navbar-nav mx-auto align-items-lg-center">
 
-<!-- HOME -->
-<li class="nav-item">
+<?php foreach(
+$menus as $menu
+):
 
-<a class="nav-link"
-href="<?= base_url() ?>">
+$submenus =
+$this->Menu_model
+->get_submenu(
+$menu->id
+);
 
-Home
+$isExternal =
+filter_var(
+$menu->url,
+FILTER_VALIDATE_URL
+);
 
-</a>
+$link =
+$isExternal
+? $menu->url
+: base_url(
+$menu->url
+);
 
-</li>
+/* CATEGORY AUTO */
+$isCategoryMenu =
+strtolower(
+trim(
+$menu->title
+)
+) == 'kategori';
+?>
 
-<!-- ARTIKEL -->
-<li class="nav-item">
+<!-- CATEGORY AUTO -->
+<?php if(
+$isCategoryMenu
+): ?>
 
-<a class="nav-link"
-href="<?= base_url('articles') ?>">
-
-Artikel
-
-</a>
-
-</li>
-
-<!-- CATEGORY -->
 <li class="nav-item dropdown">
 
 <a class="nav-link dropdown-toggle"
@@ -121,15 +132,21 @@ role="button"
 data-bs-toggle="dropdown"
 aria-expanded="false">
 
-Kategori
+<?= $menu->title ?>
 
 </a>
 
 <ul class="dropdown-menu shadow border-0 rounded-4">
 
-<?php if(!empty($categories)): ?>
+<?php if(
+!empty(
+$categories
+)
+): ?>
 
-<?php foreach($categories as $cat): ?>
+<?php foreach(
+$categories as $cat
+): ?>
 
 <li>
 
@@ -165,17 +182,88 @@ Belum ada kategori
 
 </li>
 
-<!-- ABOUT -->
-<li class="nav-item">
+<!-- SUBMENU -->
+<?php elseif(
+!empty(
+$submenus
+)
+): ?>
 
-<a class="nav-link"
-href="#">
+<li class="nav-item dropdown">
 
-About
+<a class="nav-link dropdown-toggle"
+href="#"
+role="button"
+data-bs-toggle="dropdown"
+aria-expanded="false">
+
+<?= $menu->title ?>
+
+</a>
+
+<ul class="dropdown-menu shadow border-0 rounded-4">
+
+<?php foreach(
+$submenus as $sub
+):
+
+$subLink =
+filter_var(
+$sub->url,
+FILTER_VALIDATE_URL
+)
+? $sub->url
+: base_url(
+$sub->url
+);
+?>
+
+<li>
+
+<a class="dropdown-item py-2"
+href="<?= $subLink ?>"
+
+<?= !empty(
+$sub->target_blank
+)
+? 'target="_blank"'
+: '' ?>>
+
+<?= $sub->title ?>
 
 </a>
 
 </li>
+
+<?php endforeach; ?>
+
+</ul>
+
+</li>
+
+<!-- NORMAL MENU -->
+<?php else: ?>
+
+<li class="nav-item">
+
+<a class="nav-link"
+href="<?= $link ?>"
+
+<?= !empty(
+$menu->target_blank
+)
+? 'target="_blank"'
+: '' ?>>
+
+<?= $menu->title ?>
+
+</a>
+
+</li>
+
+<?php endif; ?>
+
+<?php endforeach; ?>
 
 </ul>
 

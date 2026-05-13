@@ -103,318 +103,220 @@ Administrator
 <nav class="mt-3">
 
 <ul class="nav nav-pills nav-sidebar flex-column"
-data-widget="treeview"
-role="menu"
-data-accordion="false">
-
-<!-- DASHBOARD -->
-<li class="nav-item">
-
-<a href="<?= base_url('admin') ?>"
-class="nav-link
-<?= uri_string() ==
-'admin'
-? 'active'
-: '' ?>">
-
-<i class="nav-icon fas fa-tachometer-alt"></i>
-
-<p>
-Dashboard
-</p>
-
-</a>
-
-</li>
-
-<!-- BLOG -->
-<li class="nav-header">
-
-BLOG MANAGEMENT
-
-</li>
-
-<li class="nav-item has-treeview
-<?= strpos(
-uri_string(),
-'admin/posts'
-) !== false
-? 'menu-open'
-: '' ?>">
-
-<a href="#"
-class="nav-link
-<?= strpos(
-uri_string(),
-'admin/posts'
-) !== false
-? 'active'
-: '' ?>">
-
-<i class="nav-icon fas fa-newspaper"></i>
-
-<p>
-
-Artikel
-
-<i class="right fas fa-angle-left"></i>
-
-</p>
-
-</a>
-
-<ul class="nav nav-treeview">
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-'admin/posts'
-) ?>"
-class="nav-link
-<?= uri_string()
-== 'admin/posts'
-? 'active'
-: '' ?>">
-
-<i class="far fa-circle nav-icon"></i>
-
-<p>
-Semua Artikel
-</p>
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-'admin/posts/create'
-) ?>"
-class="nav-link
-<?= uri_string()
-== 'admin/posts/create'
-? 'active'
-: '' ?>">
-
-<i class="far fa-circle nav-icon"></i>
-
-<p>
-Tambah Artikel
-</p>
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-'admin/posts/draft'
-) ?>"
-class="nav-link
-<?= uri_string()
-== 'admin/posts/draft'
-? 'active'
-: '' ?>">
-
-<i class="far fa-circle nav-icon"></i>
-
-<p>
-Draft Artikel
-</p>
-
-</a>
-
-</li>
-
-</ul>
-
-</li>
-
-<!-- MENU -->
-<?php
-$menus = [
-
-[
-'url' =>
-'admin/categories',
-'icon' =>
-'fas fa-list',
-'name' =>
-'Kategori'
-],
-
-[
-'url' =>
-'admin/tags',
-'icon' =>
-'fas fa-tags',
-'name' =>
-'Tags'
-],
-
-[
-'url' =>
-'admin/media',
-'icon' =>
-'fas fa-photo-video',
-'name' =>
-'Media Library'
-],
-
-[
-'url' =>
-'admin/comments',
-'icon' =>
-'fas fa-comments',
-'name' =>
-'Komentar'
-]
-
-];
-?>
-
-<?php foreach(
-$menus as $menu
-): ?>
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-$menu['url']
-) ?>"
-class="nav-link
-<?= uri_string()
-== $menu['url']
-? 'active'
-: '' ?>">
-
-<i class="nav-icon
-<?= $menu['icon'] ?>"></i>
-
-<p>
-
-<?= $menu['name'] ?>
-
-</p>
-
-</a>
-
-</li>
-
-<?php endforeach; ?>
-
-<!-- CONTENT -->
-<li class="nav-header">
-
-SEO & CONTENT
-
-</li>
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-'admin/pages'
-) ?>"
-class="nav-link">
-
-<i class="nav-icon fas fa-file"></i>
-
-<p>
-Halaman
-</p>
-
-</a>
-
-</li>
-
-<!-- USER -->
-<li class="nav-header">
-
-USER MANAGEMENT
-
-</li>
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-'admin/profile'
-) ?>"
-class="nav-link">
-
-<i class="nav-icon fas fa-user"></i>
-
-<p>
-Profile Saya
-</p>
-
-</a>
-
-</li>
-
-<!-- SETTINGS -->
-<li class="nav-header">
-
-SETTINGS
-
-</li>
-
-<li class="nav-item">
-
-<a href="<?= base_url(
-'admin/settings'
-) ?>"
-class="nav-link
-<?= uri_string()
-== 'admin/settings'
-? 'active'
-: '' ?>">
-
-<i class="nav-icon fas fa-cogs"></i>
-
-<p>
-Pengaturan Website
-</p>
-
-</a>
-
-</li>
-
-<li class="nav-item">
-
-<a href="<?= base_url() ?>"
-target="_blank"
-class="nav-link">
-
-<i class="nav-icon fas fa-globe"></i>
-
-<p>
-Lihat Website
-</p>
-
-</a>
-
-</li>
-
-<li class="nav-item mt-4">
-
-<a href="<?= base_url(
-'auth/logout'
-) ?>"
-class="nav-link bg-danger">
-
-<i class="nav-icon
-fas fa-sign-out-alt"></i>
-
-<p>Logout</p>
-
-</a>
-</p>
-
-</a>
-
-</li>
+    data-widget="treeview"
+    role="menu"
+    data-accordion="false">
+
+    <!-- DASHBOARD -->
+    <li class="nav-item">
+        <a href="<?= base_url('admin') ?>"
+           class="nav-link <?= uri_string() == 'admin' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+
+    <!-- BLOG -->
+    <li class="nav-header">
+        BLOG MANAGEMENT
+    </li>
+
+    <li class="nav-item has-treeview
+        <?= strpos(uri_string(), 'admin/posts') !== false ? 'menu-open' : '' ?>">
+
+        <a href="#"
+           class="nav-link
+           <?= strpos(uri_string(), 'admin/posts') !== false ? 'active' : '' ?>">
+
+            <i class="nav-icon fas fa-newspaper"></i>
+
+            <p>
+                Artikel
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+
+        <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+                <a href="<?= base_url('admin/posts') ?>"
+                   class="nav-link <?= uri_string() == 'admin/posts' ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Semua Artikel</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="<?= base_url('admin/posts/create') ?>"
+                   class="nav-link <?= uri_string() == 'admin/posts/create' ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tambah Artikel</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="<?= base_url('admin/posts/draft') ?>"
+                   class="nav-link <?= uri_string() == 'admin/posts/draft' ? 'active' : '' ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Draft Artikel</p>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/categories') ?>"
+           class="nav-link <?= uri_string() == 'admin/categories' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-list"></i>
+            <p>Kategori</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/tags') ?>"
+           class="nav-link <?= uri_string() == 'admin/tags' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>Tags</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/comments') ?>"
+           class="nav-link <?= uri_string() == 'admin/comments' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-comments"></i>
+            <p>Komentar</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/media') ?>"
+           class="nav-link <?= uri_string() == 'admin/media' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-photo-video"></i>
+            <p>Media Library</p>
+        </a>
+    </li>
+
+
+    <!-- CONTENT -->
+    <li class="nav-header">
+        CONTENT MANAGEMENT
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/pages') ?>"
+           class="nav-link <?= uri_string() == 'admin/pages' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>Halaman</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/menu') ?>"
+           class="nav-link <?= uri_string() == 'admin/menu' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>Menu Navigasi</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/banner') ?>"
+           class="nav-link <?= uri_string() == 'admin/banner' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-images"></i>
+            <p>Banner / Slider</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/seo') ?>"
+           class="nav-link <?= uri_string() == 'admin/seo' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-search"></i>
+            <p>SEO Management</p>
+        </a>
+    </li>
+
+
+    <!-- USER -->
+    <li class="nav-header">
+        USER MANAGEMENT
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/users') ?>"
+           class="nav-link <?= uri_string() == 'admin/users' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Manajemen User</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/profile') ?>"
+           class="nav-link <?= uri_string() == 'admin/profile' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-user-circle"></i>
+            <p>Profile Saya</p>
+        </a>
+    </li>
+
+
+    <!-- TOOLS -->
+    <li class="nav-header">
+        TOOLS
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/messages') ?>"
+           class="nav-link <?= uri_string() == 'admin/messages' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-envelope"></i>
+            <p>Pesan Kontak</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/backup') ?>"
+           class="nav-link <?= uri_string() == 'admin/backup' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-database"></i>
+            <p>Backup Database</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/logs') ?>"
+           class="nav-link <?= uri_string() == 'admin/logs' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-history"></i>
+            <p>Activity Logs</p>
+        </a>
+    </li>
+
+
+    <!-- SETTINGS -->
+    <li class="nav-header">
+        SETTINGS
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url('admin/settings') ?>"
+           class="nav-link <?= uri_string() == 'admin/settings' ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-cogs"></i>
+            <p>Pengaturan Website</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="<?= base_url() ?>"
+           target="_blank"
+           class="nav-link">
+            <i class="nav-icon fas fa-globe"></i>
+            <p>Lihat Website</p>
+        </a>
+    </li>
+
+    <li class="nav-item mt-4">
+        <a href="<?= base_url('auth/logout') ?>"
+           class="nav-link bg-danger">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>Logout</p>
+        </a>
+    </li>
 
 </ul>
 

@@ -49,30 +49,86 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
-$route['admin'] = 'admin/dashboard';
-$route['login'] = 'auth';
-$route['blog/(:any)'] =
-'blog/detail/$1';
-$route['category/(:any)'] =
-'category/index/$1';
-$route['search'] =
-'search/index';
-$route['articles'] =
-'articles/index';
-$route['admin/media'] =
-'admin/media/index';
-$route['comment/store']
-= 'comment/store';
+$route['default_controller']
+= 'home';
+
+$route['404_override']
+= '';
+
+$route['translate_uri_dashes']
+= FALSE;
+
+/* AUTH */
+$route['login']
+= 'auth';
+
+$route['logout']
+= 'auth/logout';
+
+/* ADMIN */
+$route['admin']
+= 'admin/dashboard';
+
+$route['admin/menu']
+= 'admin/menu/index';
+
+$route['admin/menu/store']
+= 'admin/menu/store';
+
+$route['admin/menu/delete/(:num)']
+= 'admin/menu/delete/$1';
+
+$route['admin/media']
+= 'admin/media/index';
 
 $route['admin/comments']
 = 'admin/comments/index';
+
 $route['admin/settings']
 = 'admin/settings';
 
 $route['admin/settings/update']
 = 'admin/settings/update';
-$route['logout'] =
-'auth/logout';
+
+/* ======================
+   PAGES
+====================== */
+
+$route['admin/pages']
+= 'admin/pages/index';
+
+$route['admin/pages/create']
+= 'admin/pages/create';
+
+$route['admin/pages/store']
+= 'admin/pages/store';
+
+$route['admin/pages/edit/(:num)']
+= 'admin/pages/edit/$1';
+
+$route['admin/pages/update/(:num)']
+= 'admin/pages/update/$1';
+
+$route['admin/pages/delete/(:num)']
+= 'admin/pages/delete/$1';
+
+/* BLOG */
+$route['blog/(:any)']
+= 'blog/detail/$1';
+
+$route['category/(:any)']
+= 'category/index/$1';
+
+$route['articles']
+= 'articles/index';
+
+$route['search']
+= 'search/index';
+
+$route['comment/store']
+= 'comment/store';
+
+/* UNIVERSAL PAGE */
+/* HARUS PALING BAWAH */
+$route['(:any)']
+= 'page/view/$1';

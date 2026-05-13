@@ -15,13 +15,24 @@ extends CI_Controller
             'Setting_model'
         );
 
+        $this->load->model(
+            'Menu_model'
+        );
+
         $this->setting =
         $this->Setting_model
         ->get();
 
+        $menus =
+        $this->Menu_model
+        ->get_active();
+
         $this->load->vars([
             'setting' =>
-            $this->setting
+            $this->setting,
+
+            'menus' =>
+            $menus
         ]);
     }
 }
