@@ -1,0 +1,125 @@
+/* ======================
+   SCHOOL ADMIN THEME
+====================== */
+
+:root {
+	--primary: #15803d;
+	--secondary: #16a34a;
+	--bg: #f5f7f4;
+	--card: #ffffff;
+}
+
+/* BODY */
+body {
+	background: var(--bg);
+	font-family: "Inter", sans-serif;
+}
+
+.content-wrapper {
+	background: var(--bg) !important;
+}
+
+/* SIDEBAR */
+.main-sidebar {
+	background: linear-gradient(180deg, #166534, #15803d) !important;
+}
+
+.brand-link {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-text,
+.user-panel a,
+.nav-header {
+	color: #fff !important;
+}
+
+.nav-sidebar .nav-link {
+	border-radius: 12px;
+	margin: 4px 10px;
+	color: rgba(255, 255, 255, 0.88) !important;
+	transition: 0.3s;
+}
+
+.nav-sidebar .nav-link:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-sidebar .nav-link.active {
+	background: #fff !important;
+	color: #15803d !important;
+	font-weight: 600;
+}
+
+/* NAVBAR */
+.main-header {
+	background: #fff !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+	border: none !important;
+}
+
+/* CARD */
+.card {
+	border: none !important;
+	border-radius: 22px;
+	overflow: hidden;
+	box-shadow: 0 8px 25px rgba(22, 101, 52, 0.08);
+}
+
+.card-header {
+	background: #fff !important;
+	border-bottom: 1px solid #edf2ed !important;
+}
+
+/* SMALL BOX */
+.small-box {
+	border-radius: 22px;
+	overflow: hidden;
+	box-shadow: 0 10px 25px rgba(22, 101, 52, 0.1);
+}
+
+.small-box.bg-primary {
+	background: linear-gradient(135deg, #166534, #16a34a) !important;
+}
+
+.small-box.bg-success {
+	background: linear-gradient(135deg, #0f766e, #14b8a6) !important;
+}
+
+.small-box.bg-warning {
+	background: linear-gradient(135deg, #ca8a04, #facc15) !important;
+}
+
+.small-box.bg-danger {
+	background: linear-gradient(135deg, #991b1b, #dc2626) !important;
+}
+
+/* BUTTON */
+.btn {
+	border-radius: 14px;
+	font-weight: 600;
+}
+
+.btn-primary {
+	background: linear-gradient(135deg, #166534, #16a34a);
+	border: none;
+}
+
+/* FORM */
+.form-control {
+	border-radius: 14px;
+	border: 1px solid #d6e2d8;
+	height: 48px;
+	box-shadow: none !important;
+}
+
+textarea.form-control {
+	height: auto;
+}
+
+/* TABLE */
+.table {
+	background: #fff;
+	border-radius: 14px;
+	overflow: hidden;
+}

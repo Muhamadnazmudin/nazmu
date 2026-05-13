@@ -1,0 +1,48 @@
+/* ======================
+   DARK PUBLIC THEME
+====================== */
+
+body {
+	background: #0f172a;
+	color: #e2e8f0;
+}
+
+.navbar {
+	background: #111827 !important;
+}
+
+.navbar-brand,
+.nav-link {
+	color: #fff !important;
+}
+
+.hero-section {
+	background: linear-gradient(135deg, #111827, #1e293b) !important;
+}
+
+.card {
+	background: #1e293b;
+	border: none;
+	color: #fff;
+	border-radius: 18px;
+}
+
+.text-muted {
+	color: #94a3b8 !important;
+}
+
+.footer-modern {
+	background: #111827;
+	color: #fff;
+}
+
+.footer-modern a {
+	color: #cbd5e1;
+}
+
+input,
+textarea {
+	background: #111827 !important;
+	color: #fff !important;
+	border: 1px solid #334155 !important;
+}
