@@ -33,16 +33,149 @@
                             <div class="mb-3">
 
                                 <?php
-                                $ext = strtolower(
-                                    $file->file_type
-                                );
-                                ?>
 
-                                <span class="badge bg-primary">
+$ext = '-';
 
-                                    <?= strtoupper($ext); ?>
+if(
+    !empty($file->file_type)
+){
 
-                                </span>
+    $ext =
+        strtolower(
+            str_replace(
+                '.',
+                '',
+                $file->file_type
+            )
+        );
+
+}elseif(
+    $file->file_source
+    == 'external'
+){
+
+    // Google Drive
+    if(
+        strpos(
+            $file->file_path,
+            'drive.google.com'
+        ) !== false
+    ){
+
+        $ext = 'gdrive';
+
+    }
+
+    // Dropbox
+    elseif(
+        strpos(
+            $file->file_path,
+            'dropbox'
+        ) !== false
+    ){
+
+        $ext = 'dropbox';
+
+    }
+
+    // OneDrive
+    elseif(
+        strpos(
+            $file->file_path,
+            'onedrive'
+        ) !== false
+    ){
+
+        $ext = 'onedrive';
+
+    }
+
+    else{
+
+        $ext = 'link';
+
+    }
+
+}
+?>
+
+<div class="mb-3">
+
+    <?php if($ext == 'gdrive'): ?>
+
+        <span class="badge bg-success">
+
+            <i class="fab fa-google-drive"></i>
+            Google Drive
+
+        </span>
+
+    <?php elseif($ext == 'pdf'): ?>
+
+        <span class="badge bg-danger">
+
+            PDF
+
+        </span>
+
+    <?php elseif(
+        in_array(
+            $ext,
+            ['doc','docx']
+        )
+    ): ?>
+
+        <span class="badge bg-primary">
+
+            WORD
+
+        </span>
+
+    <?php elseif(
+        in_array(
+            $ext,
+            ['xls','xlsx']
+        )
+    ): ?>
+
+        <span class="badge bg-success">
+
+            EXCEL
+
+        </span>
+
+    <?php elseif(
+        in_array(
+            $ext,
+            ['ppt','pptx']
+        )
+    ): ?>
+
+        <span class="badge bg-warning text-dark">
+
+            PPT
+
+        </span>
+
+    <?php elseif($ext == 'zip'): ?>
+
+        <span class="badge bg-secondary">
+
+            ZIP
+
+        </span>
+
+    <?php else: ?>
+
+        <span class="badge bg-dark">
+
+            <?= strtoupper($ext); ?>
+
+        </span>
+
+    <?php endif; ?>
+
+</div>
 
                             </div>
 

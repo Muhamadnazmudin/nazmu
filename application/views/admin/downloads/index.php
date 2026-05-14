@@ -123,15 +123,71 @@
                                 <td>
 
                                     <?php
-                                    $ext =
-                                        strtolower(
-                                            str_replace(
-                                                '.',
-                                                '',
-                                                $row->file_type
-                                            )
-                                        );
-                                    ?>
+
+$ext = '-';
+
+if(
+    !empty($row->file_type)
+){
+
+    $ext =
+        strtolower(
+            str_replace(
+                '.',
+                '',
+                $row->file_type
+            )
+        );
+
+}elseif(
+    $row->file_source
+    == 'external'
+){
+
+    // Google Drive
+    if(
+        strpos(
+            $row->file_path,
+            'drive.google.com'
+        ) !== false
+    ){
+
+        $ext = 'gdrive';
+
+    }
+
+    // Dropbox
+    elseif(
+        strpos(
+            $row->file_path,
+            'dropbox'
+        ) !== false
+    ){
+
+        $ext = 'dropbox';
+
+    }
+
+    // OneDrive
+    elseif(
+        strpos(
+            $row->file_path,
+            'onedrive'
+        ) !== false
+    ){
+
+        $ext = 'onedrive';
+
+    }
+
+    else{
+
+        $ext = 'link';
+
+    }
+
+}
+?>
 
                                     <?php if(in_array($ext,['jpg','jpeg','png','webp'])): ?>
 
@@ -147,7 +203,53 @@
 
                                         <div class="text-center">
 
-                                            <i class="fas fa-file fa-2x text-primary"></i>
+                                            <?php if($ext == 'gdrive'): ?>
+
+<i class="fab fa-google-drive
+fa-2x text-success"></i>
+
+<?php elseif($ext == 'pdf'): ?>
+
+<i class="fas fa-file-pdf
+fa-2x text-danger"></i>
+
+<?php elseif(in_array(
+$ext,
+['doc','docx']
+)): ?>
+
+<i class="fas fa-file-word
+fa-2x text-primary"></i>
+
+<?php elseif(in_array(
+$ext,
+['xls','xlsx']
+)): ?>
+
+<i class="fas fa-file-excel
+fa-2x text-success"></i>
+
+<?php elseif(in_array(
+$ext,
+['ppt','pptx']
+)): ?>
+
+<i class="fas fa-file-powerpoint
+fa-2x text-warning"></i>
+
+<?php elseif(
+$ext == 'zip'
+): ?>
+
+<i class="fas fa-file-archive
+fa-2x text-secondary"></i>
+
+<?php else: ?>
+
+<i class="fas fa-file
+fa-2x text-primary"></i>
+
+<?php endif; ?>
 
                                             <div class="small text-muted">
                                                 <?= strtoupper($ext); ?>
@@ -185,12 +287,48 @@
 
                                 <td>
 
-                                    <span class="badge badge-info">
+                                    <?php if($ext == 'gdrive'): ?>
 
-                                        <?= strtoupper($ext); ?>
+    <span class="badge badge-success">
 
-                                    </span>
+        <i class="fab fa-google-drive"></i>
+        GDRIVE
 
+    </span>
+
+<?php elseif($ext == 'dropbox'): ?>
+
+    <span class="badge badge-primary">
+
+        DROPBOX
+
+    </span>
+
+<?php elseif($ext == 'onedrive'): ?>
+
+    <span class="badge badge-info">
+
+        ONEDRIVE
+
+    </span>
+
+<?php elseif($ext == 'link'): ?>
+
+    <span class="badge badge-secondary">
+
+        LINK
+
+    </span>
+
+<?php else: ?>
+
+    <span class="badge badge-info">
+
+        <?= strtoupper($ext); ?>
+
+    </span>
+
+<?php endif; ?>
                                 </td>
 
                                 <td>

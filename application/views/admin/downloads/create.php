@@ -170,32 +170,51 @@
 
                                 </div>
 
-                                <!-- EXTERNAL -->
-                                <div id="externalUpload"
-                                     style="display:none;">
+                                <!-- EXTERNAL URL -->
+<div id="externalUpload"
+     style="display:none;">
 
-                                    <div class="form-group">
+    <div class="form-group">
 
-                                        <label>
-                                            External URL
-                                        </label>
+        <label>
+            URL Google Drive / External File
+        </label>
 
-                                        <input type="url"
-                                               name="external_url"
-                                               class="form-control"
-                                               placeholder="https://drive.google.com/...">
+        <div class="input-group">
 
-                                        <small class="text-muted">
+            <div class="input-group-prepend">
 
-                                            Tempel link Google Drive,
-                                            Dropbox, OneDrive,
-                                            CDN, dll.
+                <span class="input-group-text">
 
-                                        </small>
+                    <i class="fab fa-google-drive"></i>
 
-                                    </div>
+                </span>
 
-                                </div>
+            </div>
+
+            <input type="url"
+                   name="external_url"
+                   id="external_url"
+                   class="form-control"
+                   placeholder="https://drive.google.com/file/d/...">
+
+        </div>
+
+        <small class="text-muted">
+
+            Bisa menggunakan:
+            Google Drive,
+            Dropbox,
+            OneDrive,
+            CDN,
+            Mediafire,
+            atau direct download link.
+
+        </small>
+
+    </div>
+
+</div>
 
                                 <!-- DESCRIPTION -->
                                 <div class="form-group">
@@ -320,39 +339,101 @@
 
 
 <script>
-$(function(){
 
-    $('#file_source').change(function(){
+document.addEventListener(
+'DOMContentLoaded',
+function(){
 
-        let val = $(this).val();
+    const source =
+        document.getElementById(
+            'file_source'
+        );
 
-        if(val === 'server'){
+    const serverUpload =
+        document.getElementById(
+            'serverUpload'
+        );
 
-            $('#serverUpload').show();
-            $('#externalUpload').hide();
+    const externalUpload =
+        document.getElementById(
+            'externalUpload'
+        );
+
+    const fileInput =
+        document.getElementById(
+            'fileInput'
+        );
+
+    const externalUrl =
+        document.getElementById(
+            'external_url'
+        );
+
+    function toggleSource(){
+
+        if(
+            source.value
+            === 'server'
+        ){
+
+            serverUpload
+                .style.display
+                = 'block';
+
+            externalUpload
+                .style.display
+                = 'none';
+
+            fileInput
+                .required = true;
+
+            externalUrl
+                .required = false;
 
         }else{
 
-            $('#serverUpload').hide();
-            $('#externalUpload').show();
+            serverUpload
+                .style.display
+                = 'none';
+
+            externalUpload
+                .style.display
+                = 'block';
+
+            fileInput
+                .required = false;
+
+            externalUrl
+                .required = true;
 
         }
 
-    });
+    }
+
+    toggleSource();
+
+    source.addEventListener(
+        'change',
+        toggleSource
+    );
 
 
-    $('.custom-file-input').on(
+    // custom file label
+    fileInput.addEventListener(
         'change',
         function(){
 
-            let fileName =
-                $(this).val()
-                .split('\\')
-                .pop();
+            const fileName =
+                this.files[0]
+                ? this.files[0].name
+                : 'Pilih file';
 
-            $(this)
-            .next('.custom-file-label')
-            .html(fileName);
+            document
+                .querySelector(
+                    '.custom-file-label'
+                )
+                .innerHTML =
+                fileName;
 
         }
     );
