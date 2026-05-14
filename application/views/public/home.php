@@ -365,7 +365,19 @@ linear-gradient(
 );
 border-bottom:
 1px solid #eee;
+padding:80px 0;
 }
+
+/* FIX HERO TEXT */
+/* .hero-section h1{
+color:#111827 !important;
+font-weight:800;
+}
+
+.hero-section p{
+color:#6b7280 !important;
+font-size:18px;
+} */
 
 .featured-image{
 width:100%;

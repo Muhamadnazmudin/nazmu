@@ -291,8 +291,47 @@ linear-gradient(
 );
 border-bottom:
 1px solid #eee;
+padding:80px 0;
 }
 
+/* HERO TEXT FIX */
+/* .hero-section h1{
+color:#111827 !important;
+font-weight:800;
+} */
+
+.hero-section p{
+color:#6b7280 !important;
+font-size:18px;
+}
+
+/* SIDEBAR CATEGORY FIX */
+.list-group-item a{
+color:#374151 !important;
+font-weight:500;
+}
+
+.list-group-item a:hover{
+color:#2563eb !important;
+text-decoration:none;
+}
+
+/* ACTIVE CATEGORY */
+.text-primary{
+color:#2563eb !important;
+}
+
+/* POPULAR POST LINK */
+.card-body a.text-dark{
+color:#111827 !important;
+}
+
+.card-body a.text-dark:hover{
+color:#2563eb !important;
+text-decoration:none;
+}
+
+/* CARD */
 .post-card{
 border-radius:18px;
 overflow:hidden;

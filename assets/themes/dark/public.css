@@ -16,10 +16,19 @@ body {
 	color: #fff !important;
 }
 
+/* HERO */
 .hero-section {
-	background: linear-gradient(135deg, #111827, #1e293b) !important;
+	background: linear-gradient(135deg, #0f172a, #1e293b) !important;
 }
 
+.hero-section h1 {
+	color: #ffffff;
+	font-weight: 800;
+}
+
+.hero-section p {
+	color: #cbd5e1;
+}
 .card {
 	background: #1e293b;
 	border: none;

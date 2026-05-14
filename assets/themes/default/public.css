@@ -1,3 +1,57 @@
-/* Default Theme
-   Tampilan asli website
-*/
+/* ======================
+   DEFAULT PUBLIC THEME
+====================== */
+
+body {
+	background: #fff;
+	color: #111827;
+}
+
+/* NAVBAR */
+.navbar {
+	background: #fff !important;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand,
+.nav-link {
+	color: #111827 !important;
+}
+
+/* HERO */
+.hero-section {
+	background: linear-gradient(135deg, #f8fafc, #eef2ff) !important;
+}
+
+/* FIX DEFAULT HERO */
+.hero-section h1 {
+	color: #111827 !important;
+	font-weight: 800;
+}
+
+.hero-section p {
+	color: #6b7280 !important;
+}
+
+/* CARD */
+.card {
+	border: none;
+	border-radius: 18px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* BUTTON */
+.btn-primary {
+	background: #2563eb;
+	border: none;
+}
+
+/* FOOTER */
+.footer-modern {
+	background: #111827;
+	color: #fff;
+}
+
+.footer-modern a {
+	color: #d1d5db;
+}

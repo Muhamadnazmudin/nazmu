@@ -290,8 +290,26 @@ linear-gradient(
 );
 border-bottom:
 1px solid #eee;
+padding:80px 0;
 }
 
+/* FIX TEXT HERO */
+/* .hero-section h1{
+color:#111827 !important;
+font-weight:800;
+}
+
+.hero-section p{
+color:#6b7280 !important;
+font-size:18px;
+} */
+
+.hero-section .badge{
+font-size:14px;
+padding:8px 14px;
+}
+
+/* CARD */
 .post-card{
 border-radius:18px;
 overflow:hidden;
