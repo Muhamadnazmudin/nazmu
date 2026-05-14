@@ -196,7 +196,95 @@ Administrator
             <p>Media Library</p>
         </a>
     </li>
+    <!-- DOWNLOAD CENTER -->
+<li class="nav-header">
+    DOWNLOAD CENTER
+</li>
 
+<li class="nav-item has-treeview
+<?= strpos(uri_string(), 'admin/downloads') !== false
+|| strpos(uri_string(), 'admin/download_categories') !== false
+? 'menu-open'
+: '' ?>">
+
+    <a href="#"
+       class="nav-link
+       <?= strpos(uri_string(), 'admin/downloads') !== false
+       || strpos(uri_string(), 'admin/download_categories') !== false
+       ? 'active'
+       : '' ?>">
+
+        <i class="nav-icon fas fa-download"></i>
+
+        <p>
+            Download Center
+            <i class="right fas fa-angle-left"></i>
+        </p>
+
+    </a>
+
+    <ul class="nav nav-treeview">
+
+        <!-- Semua File -->
+        <li class="nav-item">
+
+            <a href="<?= base_url('admin/downloads') ?>"
+               class="nav-link
+               <?= uri_string() == 'admin/downloads'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+                    Semua File
+                </p>
+
+            </a>
+
+        </li>
+
+        <!-- Tambah File -->
+        <li class="nav-item">
+
+            <a href="<?= base_url('admin/downloads/create') ?>"
+               class="nav-link
+               <?= uri_string() == 'admin/downloads/create'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+                    Tambah File
+                </p>
+
+            </a>
+
+        </li>
+
+        <!-- Kategori -->
+        <li class="nav-item">
+
+            <a href="<?= base_url('admin/download_categories') ?>"
+               class="nav-link
+               <?= uri_string() == 'admin/download_categories'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+                    Kategori Download
+                </p>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
 
     <!-- CONTENT -->
     <li class="nav-header">

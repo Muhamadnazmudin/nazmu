@@ -120,9 +120,7 @@ $menu->title
 ?>
 
 <!-- CATEGORY AUTO -->
-<?php if(
-$isCategoryMenu
-): ?>
+<?php if($isCategoryMenu): ?>
 
 <li class="nav-item dropdown">
 
@@ -138,31 +136,25 @@ aria-expanded="false">
 
 <ul class="dropdown-menu shadow border-0 rounded-4">
 
-<?php if(
-!empty(
-$categories
-)
-): ?>
+<?php if(!empty($blog_categories)): ?>
 
-<?php foreach(
-$categories as $cat
-): ?>
+    <?php foreach($blog_categories as $cat): ?>
 
-<li>
+    <li>
 
-<a class="dropdown-item py-2"
-href="<?= base_url(
-'category/' .
-$cat->slug
-) ?>">
+        <a class="dropdown-item py-2"
+        href="<?= base_url(
+            'category/' .
+            $cat->slug
+        ) ?>">
 
-<?= $cat->name ?>
+            <?= $cat->name ?>
 
-</a>
+        </a>
 
-</li>
+    </li>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
 <?php else: ?>
 

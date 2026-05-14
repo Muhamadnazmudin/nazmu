@@ -128,6 +128,15 @@ $route['search']
 $route['comment/store']
 = 'comment/store';
 
+
+$route['download-center'] =
+'download/index';
+
+$route['download-center/file/(:any)'] =
+'download/file/$1';
+
+$route['download-center/category/(:any)'] =
+'download/category/$1';
 /* UNIVERSAL PAGE */
 /* HARUS PALING BAWAH */
 $route['(:any)']

@@ -16,8 +16,7 @@ Welcome to Nazmu Blog
 
 <p class="lead text-muted">
 
-Blog pribadi berbasis
-CodeIgniter 3 & PHP 7.4
+Blog Ngahuleng
 
 </p>
 
