@@ -374,7 +374,89 @@ Administrator
             <p>Activity Logs</p>
         </a>
     </li>
+    <!-- SCRAP IJAZAH -->
+<li class="nav-item has-treeview
+<?= strpos(uri_string(), 'admin/scrapijazah') !== false
+? 'menu-open'
+: '' ?>">
 
+    <a href="#"
+       class="nav-link
+       <?= strpos(uri_string(), 'admin/scrapijazah') !== false
+       ? 'active'
+       : '' ?>">
+
+        <i class="nav-icon fas fa-file-pdf"></i>
+
+        <p>
+            Scrap e-Ijazah
+            <i class="right fas fa-angle-left"></i>
+        </p>
+
+    </a>
+
+    <ul class="nav nav-treeview">
+
+        <!-- Dashboard -->
+        <li class="nav-item">
+
+            <a href="<?= base_url('admin/scrapijazah') ?>"
+               class="nav-link
+               <?= uri_string() == 'admin/scrapijazah'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+                    Dashboard
+                </p>
+
+            </a>
+
+        </li>
+
+        <!-- Riwayat Sekolah -->
+        <li class="nav-item">
+
+            <a href="<?= base_url('admin/scrapijazah/schools') ?>"
+               class="nav-link
+               <?= uri_string() == 'admin/scrapijazah/schools'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+                    Riwayat Sekolah
+                </p>
+
+            </a>
+
+        </li>
+
+        <!-- Log Upload -->
+        <li class="nav-item">
+
+            <a href="<?= base_url('admin/scrapijazah/logs') ?>"
+               class="nav-link
+               <?= uri_string() == 'admin/scrapijazah/logs'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+                    Logs Penggunaan
+                </p>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
 
     <!-- SETTINGS -->
     <li class="nav-header">

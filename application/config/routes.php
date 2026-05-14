@@ -137,7 +137,27 @@ $route['download-center/file/(:any)'] =
 
 $route['download-center/category/(:any)'] =
 'download/category/$1';
+
+/*
+|--------------------------------------------------------------------------
+| Scrap Ijazah
+|--------------------------------------------------------------------------
+*/
+
+$route['scrap-ijazah']
+=
+'scrapijazah/index';
+
+$route['scrap-ijazah/process']
+=
+'scrapijazah/process';
+
+$route['scrap-ijazah/download']
+=
+'scrapijazah/download';
+
 /* UNIVERSAL PAGE */
 /* HARUS PALING BAWAH */
 $route['(:any)']
 = 'page/view/$1';
+
