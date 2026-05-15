@@ -285,7 +285,93 @@ Administrator
     </ul>
 
 </li>
+<!-- TUTORIAL -->
+<li class="nav-header">
+    TUTORIAL CENTER
+</li>
 
+<li class="nav-item has-treeview
+<?= strpos(
+    uri_string(),
+    'admin/tutorials'
+) !== false
+? 'menu-open'
+: '' ?>">
+
+    <a href="#"
+       class="nav-link
+       <?= strpos(
+            uri_string(),
+            'admin/tutorials'
+       ) !== false
+       ? 'active'
+       : '' ?>">
+
+        <i class="nav-icon fas fa-video"></i>
+
+        <p>
+
+            Tutorial
+
+            <i class="right fas fa-angle-left"></i>
+
+        </p>
+
+    </a>
+
+    <ul class="nav nav-treeview">
+
+        <!-- Semua Tutorial -->
+        <li class="nav-item">
+
+            <a href="<?= base_url(
+                'admin/tutorials'
+            ) ?>"
+               class="nav-link
+               <?= uri_string()
+               == 'admin/tutorials'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+
+                    Semua Tutorial
+
+                </p>
+
+            </a>
+
+        </li>
+
+        <!-- Tambah Tutorial -->
+        <li class="nav-item">
+
+            <a href="<?= base_url(
+                'admin/tutorials/create'
+            ) ?>"
+               class="nav-link
+               <?= uri_string()
+               == 'admin/tutorials/create'
+               ? 'active'
+               : '' ?>">
+
+                <i class="far fa-circle nav-icon"></i>
+
+                <p>
+
+                    Tambah Tutorial
+
+                </p>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
     <!-- CONTENT -->
     <li class="nav-header">
         CONTENT MANAGEMENT

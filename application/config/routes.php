@@ -156,6 +156,25 @@ $route['admin/seo']
 $route['admin/seo/update']
 = 'admin/seo/update';
 
+/* TUTORIAL */
+$route['admin/tutorials']
+= 'admin/tutorials/index';
+
+$route['admin/tutorials/create']
+= 'admin/tutorials/create';
+
+$route['admin/tutorials/store']
+= 'admin/tutorials/store';
+
+$route['admin/tutorials/edit/(:num)']
+= 'admin/tutorials/edit/$1';
+
+$route['admin/tutorials/update/(:num)']
+= 'admin/tutorials/update/$1';
+
+$route['admin/tutorials/delete/(:num)']
+= 'admin/tutorials/delete/$1';
+
 /* BLOG */
 $route['blog/(:any)']
 = 'blog/detail/$1';
@@ -208,6 +227,17 @@ $route['scrap-ijazah/download']
 
 $route['sitemap.xml']
 = 'sitemap/index';
+
+/*
+|--------------------------------------------------------------------------
+| Tutorial
+|--------------------------------------------------------------------------
+*/
+$route['tutorial']
+= 'tutorial/index';
+
+$route['tutorial/(:any)']
+= 'tutorial/detail/$1';
 
 /* UNIVERSAL PAGE */
 /* HARUS PALING BAWAH */
