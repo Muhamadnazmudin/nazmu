@@ -14,7 +14,11 @@ class Home extends MY_Controller {
         $this->load->model(
             'Category_model'
         );
+        $this->load->model(
+            'Slider_model'
+            );
     }
+    
 
     public function index()
 {
@@ -54,6 +58,10 @@ class Home extends MY_Controller {
     $data['popular_posts'] =
     $this->Post_model
     ->get_popular_posts();
+    
+    $data['sliders'] =
+    $this->Slider_model
+    ->get_published();
 
     $this->load->view(
         'public/home',

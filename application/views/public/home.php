@@ -1,30 +1,132 @@
 <?php $this->load->view('public/layout/header'); ?>
 <?php $this->load->view('public/layout/navbar'); ?>
 
-<!-- HERO -->
-<section class="hero-section py-5">
+<!-- HERO SLIDER -->
+<?php if(!empty($sliders)): ?>
+
+<section class="hero-slider">
+
+<div id="heroCarousel"
+class="carousel slide carousel-fade"
+data-ride="carousel"
+data-interval="5000"
+data-pause="false">
+
+<div class="carousel-inner">
+
+<?php foreach(
+$sliders as
+$key => $slider
+): ?>
+
+<div class="carousel-item
+<?= $key == 0
+? 'active'
+: '' ?>">
+
+<div class="hero-slide"
+style="
+background-image:
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.45)
+),
+url('<?= base_url(
+'uploads/sliders/' .
+$slider->image
+) ?>');
+">
 
 <div class="container">
 
-<div class="text-center">
+<div class="hero-content">
 
-<h1 class="display-5 fw-bold mb-3">
+<?php if(!empty($slider->subtitle)): ?>
 
-Welcome to Nazmu Blog
+<span class="hero-subtitle">
+
+<?= html_escape(
+$slider->subtitle
+) ?>
+
+</span>
+
+<?php endif; ?>
+
+<h1>
+
+<?= html_escape(
+$slider->title
+) ?>
 
 </h1>
 
-<p class="lead text-muted">
+<p>
 
-Blog Ngahuleng
+<?= nl2br(
+html_escape(
+$slider->description
+)
+) ?>
 
 </p>
 
+<?php if(
+!empty(
+$slider->button_text
+)
+): ?>
+
+<a href="<?= $slider->button_link ?>"
+class="btn
+btn-success
+btn-lg">
+
+<?= html_escape(
+$slider->button_text
+) ?>
+
+</a>
+
+<?php endif; ?>
+
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+<?php endforeach; ?>
+
+</div>
+
+<a class="carousel-control-prev"
+href="#heroCarousel"
+role="button"
+data-slide="prev">
+
+<span class="carousel-control-prev-icon"></span>
+
+</a>
+
+<a class="carousel-control-next"
+href="#heroCarousel"
+role="button"
+data-slide="next">
+
+<span class="carousel-control-next-icon"></span>
+
+</a>
 
 </div>
 
 </section>
+
+<?php endif; ?>
+
+<div class="content-section">
 
 <div class="container pb-5">
 
@@ -353,19 +455,85 @@ views
 </div>
 
 </div>
-
+</div>
 <style>
+.content-section{
+position:relative;
+margin-top:-80px;
+z-index:20;
+background:#fff;
+border-radius:40px 40px 0 0;
+padding-top:45px;
+box-shadow:
+0 -10px 30px
+rgba(0,0,0,.04);
+}
 
-.hero-section{
+.hero-slider{
+position:relative;
+z-index:1;
+}
+.hero-slide{
+height:520px;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+color:#fff;
+}
+
+.hero-content{
+max-width:650px;
+}
+
+.hero-subtitle{
+display:inline-block;
+padding:8px 16px;
+border-radius:999px;
 background:
-linear-gradient(
-135deg,
-#f8fafc,
-#eef2ff
-);
-border-bottom:
-1px solid #eee;
-padding:80px 0;
+rgba(255,255,255,.18);
+backdrop-filter:blur(8px);
+margin-bottom:18px;
+font-size:14px;
+}
+
+.hero-content h1{
+font-size:52px;
+font-weight:800;
+margin-bottom:18px;
+line-height:1.15;
+color:#fff !important;
+}
+
+.hero-content p{
+font-size:18px;
+line-height:1.8;
+color:
+rgba(255,255,255,.92)
+!important;
+margin-bottom:24px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+width:7%;
+}
+
+@media(max-width:768px){
+
+.hero-slide{
+height:420px;
+padding:40px 0;
+}
+
+.hero-content h1{
+font-size:34px;
+}
+
+.hero-content p{
+font-size:16px;
+}
+
 }
 
 /* FIX HERO TEXT */
@@ -415,5 +583,6 @@ height:200px;
 }
 
 </style>
+
 
 <?php $this->load->view('public/layout/footer'); ?>

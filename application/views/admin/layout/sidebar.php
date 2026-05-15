@@ -308,8 +308,8 @@ Administrator
     </li>
 
     <li class="nav-item">
-        <a href="<?= base_url('admin/banner') ?>"
-           class="nav-link <?= uri_string() == 'admin/banner' ? 'active' : '' ?>">
+        <a href="<?= base_url('admin/sliders') ?>"
+           class="nav-link <?= uri_string() == 'admin/sliders' ? 'active' : '' ?>">
             <i class="nav-icon fas fa-images"></i>
             <p>Banner / Slider</p>
         </a>

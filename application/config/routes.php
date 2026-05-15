@@ -129,6 +129,27 @@ $route['admin/users/update/(:num)']
 
 $route['admin/users/delete/(:num)']
 = 'admin/users/delete/$1';
+
+/* SLIDERS */
+$route['admin/sliders']
+= 'admin/sliders/index';
+
+$route['admin/sliders/create']
+= 'admin/sliders/create';
+
+$route['admin/sliders/store']
+= 'admin/sliders/store';
+
+$route['admin/sliders/edit/(:num)']
+= 'admin/sliders/edit/$1';
+
+$route['admin/sliders/update/(:num)']
+= 'admin/sliders/update/$1';
+
+$route['admin/sliders/delete/(:num)']
+= 'admin/sliders/delete/$1';
+
+
 /* BLOG */
 $route['blog/(:any)']
 = 'blog/detail/$1';
