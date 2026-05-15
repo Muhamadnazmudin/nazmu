@@ -149,6 +149,12 @@ $route['admin/sliders/update/(:num)']
 $route['admin/sliders/delete/(:num)']
 = 'admin/sliders/delete/$1';
 
+/* SEO */
+$route['admin/seo']
+= 'admin/seo/index';
+
+$route['admin/seo/update']
+= 'admin/seo/update';
 
 /* BLOG */
 $route['blog/(:any)']
@@ -193,6 +199,15 @@ $route['scrap-ijazah/process']
 $route['scrap-ijazah/download']
 =
 'scrapijazah/download';
+
+/*
+|--------------------------------------------------------------------------
+| SEO
+|--------------------------------------------------------------------------
+*/
+
+$route['sitemap.xml']
+= 'sitemap/index';
 
 /* UNIVERSAL PAGE */
 /* HARUS PALING BAWAH */

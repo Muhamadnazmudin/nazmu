@@ -1,0 +1,11 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+
+Crawl-delay: 2
+
+Sitemap: http://localhost:90/nazmu/sitemap.xml
