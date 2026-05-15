@@ -44,7 +44,7 @@ class Auth extends MY_Controller {
     'logged_in' =>
     true
 ];
-
+    $this->session->sess_regenerate(TRUE);
     $this->session->set_userdata($session);
 
     redirect('admin');
@@ -53,6 +53,6 @@ class Auth extends MY_Controller {
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('auth');
+        redirect('login');
     }
 }

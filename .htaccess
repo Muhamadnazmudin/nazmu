@@ -2,7 +2,23 @@
     RewriteEngine On
     RewriteBase /nazmu/
 
+    # Block access system/application
+    RewriteRule ^(application|system) - [F,L]
+
+    # Prevent directory listing
+    Options -Indexes
+
+    # Remove index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
+
+# Protect sensitive files
+<FilesMatch "(\.env|composer\.json|composer\.lock|package\.json|yarn\.lock|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable access to hidden files
+RedirectMatch 403 /\..*$
