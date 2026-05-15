@@ -35,6 +35,9 @@ extends MY_Controller
         $this->load->model(
         'Category_model'
         );
+        $this->load->model(
+        'Download_model'
+        );
     }
 
     public function index()
@@ -57,6 +60,9 @@ extends MY_Controller
 
         $data['total_categories'] =
         $this->Category_model
+        ->count_all();
+        $data['total_downloads'] =
+        $this->Download_model
         ->count_all();
 
         $this->load->view(

@@ -295,8 +295,47 @@ Kelola Kategori
 
 </div>
 
+
+<!-- DOWNLOAD -->
+<div class="col-lg-3 col-md-6">
+
+<div class="small-box bg-info">
+
+<div class="inner">
+
+<h3>
+
+<?= $total_downloads ?>
+
+</h3>
+
+<p>
+
+File Download
+
+</p>
+
 </div>
 
+<div class="icon">
+
+<i class="fas fa-download"></i>
+
+</div>
+
+<a href="<?= base_url(
+'admin/downloads'
+) ?>"
+class="small-box-footer">
+
+Kelola Download
+<i class="fas fa-arrow-circle-right"></i>
+
+</a>
+
+</div>
+
+</div>
 <div class="col-lg-3 col-md-6">
 
 <div class="small-box bg-danger">
