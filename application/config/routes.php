@@ -111,7 +111,24 @@ $route['admin/pages/update/(:num)']
 
 $route['admin/pages/delete/(:num)']
 = 'admin/pages/delete/$1';
+/* USERS */
+$route['admin/users']
+= 'admin/users/index';
 
+$route['admin/users/create']
+= 'admin/users/create';
+
+$route['admin/users/store']
+= 'admin/users/store';
+
+$route['admin/users/edit/(:num)']
+= 'admin/users/edit/$1';
+
+$route['admin/users/update/(:num)']
+= 'admin/users/update/$1';
+
+$route['admin/users/delete/(:num)']
+= 'admin/users/delete/$1';
 /* BLOG */
 $route['blog/(:any)']
 = 'blog/detail/$1';
