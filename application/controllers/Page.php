@@ -23,12 +23,20 @@ extends MY_Controller
         )
         ->row();
 
-        if(
-        !$page
-        ){
-            show_404();
-        }
+        if(!$page){
 
+    $this->output
+        ->set_status_header(
+            404
+        );
+
+    $this->load->view(
+        'errors/custom_404'
+    );
+
+    return;
+
+}
         $data['title'] =
         $page->title;
 
