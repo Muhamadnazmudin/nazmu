@@ -241,6 +241,9 @@ $this->session
 
 <form action="<?= base_url('comment/store') ?>"
 method="POST">
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 
 <input type="hidden"
 name="post_id"

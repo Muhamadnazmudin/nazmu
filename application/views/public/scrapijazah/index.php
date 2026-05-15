@@ -127,7 +127,9 @@
                           method="POST"
                           enctype="multipart/form-data"
                           id="uploadForm">
-
+                        <input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
                         <div class="mb-4">
 
                             <input type="file"

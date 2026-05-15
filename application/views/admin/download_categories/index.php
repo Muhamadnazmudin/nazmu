@@ -121,7 +121,9 @@ id="edit<?= $cat->id ?>">
 
 <form action="<?= base_url('admin/download_categories/update/'.$cat->id) ?>"
 method="POST">
-
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 <div class="modal-header">
 
 <h5>
@@ -196,7 +198,9 @@ id="modalTambah">
 
 <form action="<?= base_url('admin/download_categories/store') ?>"
 method="POST">
-
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 <div class="modal-header">
 
 <h5>

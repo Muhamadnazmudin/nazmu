@@ -45,6 +45,9 @@
             <form action="<?= base_url('admin/downloads/update/'.$download->id) ?>"
                   method="POST"
                   enctype="multipart/form-data">
+                  <input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 
                 <div class="row">
 

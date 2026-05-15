@@ -98,7 +98,9 @@ id="edit<?= $cat->id ?>">
 
 <form action="<?= base_url('admin/categories/update/'.$cat->id) ?>"
 method="POST">
-
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 <div class="modal-header">
 
 <h5>Edit Kategori</h5>
@@ -165,7 +167,9 @@ id="modalTambah">
 
 <form action="<?= base_url('admin/categories/store') ?>"
 method="POST">
-
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 <div class="modal-header">
 
 <h5>Tambah Kategori</h5>

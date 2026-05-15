@@ -41,6 +41,9 @@ Kembali
 
 <form action="<?= base_url('admin/posts/update/'.$post->id) ?>"
 method="POST">
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 
 <div class="row">
 

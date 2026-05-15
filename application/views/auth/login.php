@@ -240,57 +240,57 @@ Login untuk masuk dashboard
 
 </p>
 
-<form action="<?= base_url(
-'auth/login'
-) ?>"
-method="POST">
+<?php
+$csrf = [
+    'name' => $this->security->get_csrf_token_name(),
+    'hash' => $this->security->get_csrf_hash()
+];
+?>
 
-<div class="input-group mb-3">
+<form action="<?= base_url('auth/login') ?>" method="POST">
 
-<input type="text"
-name="username"
-class="form-control"
-placeholder="Username"
-required>
+    <input type="hidden"
+           name="<?= $csrf['name']; ?>"
+           value="<?= $csrf['hash']; ?>">
 
-<div class="input-group-append">
+    <div class="input-group mb-3">
 
-<div class="input-group-text">
+        <input type="text"
+               name="username"
+               class="form-control"
+               placeholder="Username"
+               required>
 
-<i class="fas fa-user"></i>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
 
-</div>
+    </div>
 
-</div>
+    <div class="input-group mb-4">
 
-</div>
+        <input type="password"
+               name="password"
+               class="form-control"
+               placeholder="Password"
+               required>
 
-<div class="input-group mb-4">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <i class="fas fa-lock"></i>
+            </div>
+        </div>
 
-<input type="password"
-name="password"
-class="form-control"
-placeholder="Password"
-required>
+    </div>
 
-<div class="input-group-append">
+    <button type="submit"
+            class="btn btn-primary btn-block btn-login">
 
-<div class="input-group-text">
+        Masuk Dashboard
 
-<i class="fas fa-lock"></i>
-
-</div>
-
-</div>
-
-</div>
-
-<button type="submit"
-class="btn btn-primary btn-block btn-login">
-
-Masuk Dashboard
-
-</button>
+    </button>
 
 </form>
 

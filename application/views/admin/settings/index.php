@@ -66,7 +66,9 @@ action="<?= base_url(
 'admin/settings/update'
 ) ?>"
 method="POST">
-
+<input type="hidden"
+name="<?= $this->security->get_csrf_token_name(); ?>"
+value="<?= $this->security->get_csrf_hash(); ?>">
 <div class="card shadow-sm border-0">
 
 <div class="card-header p-0">
