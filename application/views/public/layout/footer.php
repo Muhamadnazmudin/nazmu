@@ -344,6 +344,8 @@ $setting->footer_script
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
+<?php $this->load->view(
+'public/components/donate'
+); ?>
 </body>
 </html>

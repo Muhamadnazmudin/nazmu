@@ -432,6 +432,33 @@ Ads Management
 </a>
 
 </li>
+
+<li class="nav-item">
+
+<a href="<?= base_url(
+'admin/donate'
+) ?>"
+class="nav-link
+<?= strpos(
+uri_string(),
+'admin/donate'
+) !== false
+? 'active'
+: '' ?>">
+
+<i class="nav-icon
+fas fa-hand-holding-heart">
+</i>
+
+<p>
+
+Donate
+
+</p>
+
+</a>
+
+</li>
     <!-- USER -->
     <li class="nav-header">
         USER MANAGEMENT
