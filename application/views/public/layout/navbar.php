@@ -138,6 +138,22 @@ aria-expanded="false">
 
 <?php if(!empty($blog_categories)): ?>
 
+    <!-- ALL ARTICLES -->
+    <li>
+
+        <a class="dropdown-item py-2 fw-semibold"
+        href="<?= base_url('articles') ?>">
+
+            📰 Semua Artikel
+
+        </a>
+
+    </li>
+
+    <li>
+        <hr class="dropdown-divider my-1">
+    </li>
+
     <?php foreach($blog_categories as $cat): ?>
 
     <li>

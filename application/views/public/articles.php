@@ -2,33 +2,40 @@
 <?php $this->load->view('public/layout/navbar'); ?>
 
 <!-- HERO -->
-<section class="hero-section py-5">
+<section class="article-hero">
 
-<div class="container text-center">
+    <div class="container text-center">
 
-<span class="badge bg-primary mb-3">
+        <span class="hero-badge">
+            📰 Semua Artikel
+        </span>
 
-📰 All Articles
+        <h1 class="hero-title">
+            Semua Artikel
+        </h1>
 
-</span>
+        <p class="hero-subtitle">
+            Temukan artikel, tutorial, dan informasi terbaru
+            seputar pendidikan dan teknologi.
+        </p>
 
-<h1 class="display-5 fw-bold">
+        <div class="hero-meta">
 
-Semua Artikel
+            <span>
+                <?= count($posts) ?> Artikel
+            </span>
 
-</h1>
+            <span>
+                <?= count($categories) ?> Kategori
+            </span>
 
-<p class="text-muted">
+        </div>
 
-<?= count($posts) ?>
-artikel tersedia
-
-</p>
-
-</div>
+    </div>
 
 </section>
 
+<div class="content-section">
 <div class="container py-5">
 
 <div class="row">
@@ -278,63 +285,6 @@ views
 </div>
 
 </div>
-
-<style>
-
-.hero-section{
-background:
-linear-gradient(
-135deg,
-#f8fafc,
-#eef2ff
-);
-border-bottom:
-1px solid #eee;
-padding:80px 0;
-}
-
-/* FIX TEXT HERO */
-/* .hero-section h1{
-color:#111827 !important;
-font-weight:800;
-}
-
-.hero-section p{
-color:#6b7280 !important;
-font-size:18px;
-} */
-
-.hero-section .badge{
-font-size:14px;
-padding:8px 14px;
-}
-
-/* CARD */
-.post-card{
-border-radius:18px;
-overflow:hidden;
-transition:.3s;
-}
-
-.post-card:hover{
-transform:
-translateY(-6px);
-}
-
-.post-image{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-
-@media(max-width:768px){
-
-.post-image{
-height:200px;
-}
-
-}
-
-</style>
+</div>
 
 <?php $this->load->view('public/layout/footer'); ?>

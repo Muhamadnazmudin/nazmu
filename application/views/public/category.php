@@ -2,34 +2,42 @@
 <?php $this->load->view('public/layout/navbar'); ?>
 
 <!-- HERO -->
-<section class="hero-section py-5">
+<section class="article-hero">
 
-<div class="container text-center">
+    <div class="container text-center">
 
-<span class="badge bg-success mb-3">
+        <span class="hero-badge">
+            📂 Category
+        </span>
 
-📂 Category
+        <h1 class="hero-title">
+            <?= $category->name ?>
+        </h1>
 
-</span>
+        <p class="hero-subtitle">
+            <?= count($posts) ?>
+            artikel ditemukan dalam kategori ini
+        </p>
 
-<h1 class="display-5 fw-bold">
+        <div class="hero-meta">
 
-<?= $category->name ?>
+            <span>
+                <?= count($posts) ?>
+                Artikel
+            </span>
 
-</h1>
+            <span>
+                <?= count($categories) ?>
+                Kategori
+            </span>
 
-<p class="text-muted">
+        </div>
 
-<?= count($posts) ?>
-artikel ditemukan
-dalam kategori ini
-
-</p>
-
-</div>
+    </div>
 
 </section>
 
+<div class="content-section">
 <div class="container py-5">
 
 <div class="row">
@@ -193,23 +201,38 @@ Categories
 
 <ul class="list-group list-group-flush">
 
-<?php foreach($categories as $cat): ?>
+    <!-- ALL CATEGORY -->
+    <li class="list-group-item px-0">
 
-<li class="list-group-item px-0">
+        <a href="<?= base_url('articles') ?>"
+        class="text-decoration-none
+        <?= uri_string() == 'articles'
+            ? 'fw-bold text-primary'
+            : '' ?>">
 
-<a href="<?= base_url('category/'.$cat->slug) ?>"
-class="text-decoration-none
-<?= $category->id == $cat->id
-? 'fw-bold text-primary'
-: '' ?>">
+            📰 Semua Artikel
 
-<?= $cat->name ?>
+        </a>
 
-</a>
+    </li>
 
-</li>
+    <?php foreach($categories as $cat): ?>
 
-<?php endforeach; ?>
+    <li class="list-group-item px-0">
+
+        <a href="<?= base_url('category/'.$cat->slug) ?>"
+        class="text-decoration-none
+        <?= $category->id == $cat->id
+            ? 'fw-bold text-primary'
+            : '' ?>">
+
+            <?= $cat->name ?>
+
+        </a>
+
+    </li>
+
+    <?php endforeach; ?>
 
 </ul>
 
@@ -282,81 +305,65 @@ views
 
 <style>
 
-.hero-section{
-background:
-linear-gradient(
-135deg,
-#f8fafc,
-#eef2ff
-);
-border-bottom:
-1px solid #eee;
-padding:80px 0;
-}
-
-/* HERO TEXT FIX */
-/* .hero-section h1{
-color:#111827 !important;
-font-weight:800;
-} */
-
-.hero-section p{
-color:#6b7280 !important;
-font-size:18px;
-}
-
-/* SIDEBAR CATEGORY FIX */
+/* SIDEBAR CATEGORY */
 .list-group-item a{
-color:#374151 !important;
-font-weight:500;
+	color:#374151 !important;
+	font-weight:500;
 }
 
 .list-group-item a:hover{
-color:#2563eb !important;
-text-decoration:none;
+	color:var(--primary,#2563eb)
+	!important;
+
+	text-decoration:none;
 }
 
 /* ACTIVE CATEGORY */
 .text-primary{
-color:#2563eb !important;
+	color:
+	var(--primary,#2563eb)
+	!important;
 }
 
-/* POPULAR POST LINK */
+/* POPULAR POST */
 .card-body a.text-dark{
-color:#111827 !important;
+	color:#111827 !important;
 }
 
 .card-body a.text-dark:hover{
-color:#2563eb !important;
-text-decoration:none;
+	color:
+	var(--primary,#2563eb)
+	!important;
+
+	text-decoration:none;
 }
 
 /* CARD */
 .post-card{
-border-radius:18px;
-overflow:hidden;
-transition:.3s;
+	border-radius:18px;
+	overflow:hidden;
+	transition:.3s;
 }
 
 .post-card:hover{
-transform:
-translateY(-6px);
+	transform:
+	translateY(-6px);
 }
 
 .post-image{
-width:100%;
-height:220px;
-object-fit:cover;
+	width:100%;
+	height:220px;
+	object-fit:cover;
 }
 
 @media(max-width:768px){
 
-.post-image{
-height:200px;
-}
+	.post-image{
+		height:200px;
+	}
 
 }
-
 </style>
-
+</div>
+</div>
 <?php $this->load->view('public/layout/footer'); ?>
