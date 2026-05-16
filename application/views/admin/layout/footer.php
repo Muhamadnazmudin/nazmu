@@ -3,6 +3,9 @@
 <script src="<?= base_url('assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
 <script src="<?= base_url('assets/admin/plugins/summernote/summernote-bs4.min.js') ?>"></script>
+<script src="<?= base_url() ?>
+assets/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js">
+</script>
 
 <script src="<?= base_url('assets/admin/dist/js/adminlte.min.js') ?>"></script>
 
