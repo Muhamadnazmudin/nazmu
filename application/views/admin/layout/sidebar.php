@@ -616,12 +616,21 @@ Donate
     </li>
 
     <li class="nav-item mt-4">
-        <a href="<?= base_url('auth/logout') ?>"
-           class="nav-link bg-danger">
-            <i class="nav-icon fas fa-sign-out-alt"></i>
-            <p>Logout</p>
-        </a>
-    </li>
+    <a href="<?= base_url(
+        'auth/logout'
+    ) ?>"
+       class="nav-link bg-danger">
+
+        <i class="nav-icon
+        fas fa-sign-out-alt">
+        </i>
+
+        <p>
+            Logout
+        </p>
+
+    </a>
+</li>
 
 </ul>
 
@@ -701,5 +710,7 @@ rgba(
 0,123,255,.2
 );
 }
-
+.main-sidebar .sidebar{
+padding-bottom:40px;
+}
 </style>
