@@ -10,39 +10,25 @@ content="width=device-width, initial-scale=1">
 
 <?php
 
+/* ==========================
+SEO DINAMIS
+========================== */
+
 $page_title =
-!empty($meta_title)
-? $meta_title
-: (
-$setting->meta_title
-?? $setting->site_name
-);
+$setting->site_name ?? 'NazmuBlog';
 
 $page_description =
-!empty(
-$meta_description
-)
-? strip_tags(
-$meta_description
-)
-: (
-$setting->meta_description
-?? $setting->site_description
-?? 'Website Modern'
-);
+$setting->site_description
+?? 'Website Modern';
 
 $page_image =
-!empty(
-$setting->og_image
-)
+!empty($setting->og_image)
 ? base_url(
 'uploads/media/' .
 $setting->og_image
 )
 : (
-!empty(
-$setting->logo
-)
+!empty($setting->logo)
 ? base_url(
 'uploads/media/' .
 $setting->logo
@@ -51,6 +37,88 @@ $setting->logo
 'assets/public/assets/default-og.jpg'
 )
 );
+
+/* ==========================
+ARTICLE SEO
+========================== */
+if(isset($post)){
+
+    $page_title =
+    !empty($post->meta_title)
+    ? $post->meta_title
+    : $post->title;
+
+    $page_description =
+    !empty($post->meta_description)
+    ? strip_tags(
+        $post->meta_description
+    )
+    : character_limiter(
+        strip_tags(
+            $post->excerpt
+        ),
+        160
+    );
+
+    if(!empty(
+        $post->thumbnail
+    )){
+        $page_image =
+        base_url(
+        'uploads/media/' .
+        $post->thumbnail
+        );
+    }
+}
+
+/* ==========================
+PAGE SEO
+========================== */
+if(isset($page)){
+
+    $page_title =
+    !empty($page->meta_title)
+    ? $page->meta_title
+    : $page->title;
+
+    $page_description =
+    !empty($page->meta_description)
+    ? strip_tags(
+        $page->meta_description
+    )
+    : character_limiter(
+        strip_tags(
+            $page->content
+        ),
+        160
+    );
+
+    if(!empty(
+        $page->thumbnail
+    )){
+        $page_image =
+        base_url(
+        'uploads/media/' .
+        $page->thumbnail
+        );
+    }
+}
+/* ==========================
+CUSTOM META
+========================== */
+if(!empty($meta_title)){
+    $page_title =
+    $meta_title;
+}
+
+if(!empty(
+$meta_description
+)){
+    $page_description =
+    strip_tags(
+    $meta_description
+    );
+}
 
 ?>
 

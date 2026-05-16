@@ -61,100 +61,146 @@ extends MY_Controller
        STORE PAGE
     ====================== */
     public function store()
-    {
-        $title =
-        trim(
-            $this->input
-            ->post(
-                'title'
-            )
-        );
+{
+    $title = trim(
+        $this->input->post('title')
+    );
 
-        $slug =
-        trim(
-            $this->input
-            ->post(
-                'slug'
-            )
-        );
+    $slug = trim(
+        $this->input->post('slug')
+    );
 
-        /* AUTO SLUG */
-        if(
-        empty(
-            $slug
+    if(empty($slug)){
+        $slug = url_title(
+            $title,
+            '-',
+            true
+        );
+    }
+
+    /* UPLOAD THUMBNAIL */
+    $thumbnail = null;
+
+    if(
+        !empty(
+            $_FILES['thumbnail_file']['name']
         )
+    ){
+
+        $config['upload_path'] =
+        './uploads/media/';
+
+        $config['allowed_types'] =
+        'jpg|jpeg|png|webp';
+
+        $config['encrypt_name'] =
+        true;
+
+        $this->load->library(
+            'upload',
+            $config
+        );
+
+        if(
+            $this->upload
+            ->do_upload(
+                'thumbnail_file'
+            )
         ){
-            $slug =
-            url_title(
-                $title,
-                '-',
-                true
-            );
+
+            $upload =
+            $this->upload
+            ->data();
+
+            $thumbnail =
+            $upload['file_name'];
         }
+    }
 
-        $data = [
+    $data = [
 
+    'title' =>
+    $title,
+
+    'slug' =>
+    $slug,
+
+    'content' =>
+    $this->input
+    ->post(
+        'content'
+    ),
+
+    'thumbnail' =>
+    $thumbnail,
+
+    'meta_title' =>
+    $this->input
+    ->post(
+        'meta_title'
+    ),
+
+    'meta_description' =>
+    $this->input
+    ->post(
+        'meta_description'
+    ),
+
+    'meta_keywords' =>
+    $this->input
+    ->post(
+        'meta_keywords'
+    ),
+
+    'status' =>
+    $this->input
+    ->post(
+        'status'
+    )
+    ? 1 : 0
+
+    ];
+
+    $this->Page_model
+    ->insert(
+        $data
+    );
+
+    if(
+    $this->input
+    ->post(
+        'show_menu'
+    )
+    ){
+        $this->db
+        ->insert(
+        'menus',
+        [
         'title' =>
         $title,
 
-        'slug' =>
+        'url' =>
         $slug,
 
-        'content' =>
-        $this->input
-        ->post(
-            'content'
-        ),
+        'sort_order' =>
+        999,
 
         'status' =>
-        $this->input
-        ->post(
-            'status'
-        )
-        ? 1 : 0
-        ];
-
-        $this->Page_model
-        ->insert(
-            $data
-        );
-
-        /* AUTO MENU */
-        if(
-        $this->input
-        ->post(
-            'show_menu'
-        )
-        ){
-            $this->db
-            ->insert(
-            'menus',
-            [
-            'title' =>
-            $title,
-
-            'url' =>
-            $slug,
-
-            'sort_order' =>
-            999,
-
-            'status' =>
-            1
-            ]
-            );
-        }
-
-        $this->session
-        ->set_flashdata(
-            'success',
-            'Halaman berhasil dibuat'
-        );
-
-        redirect(
-            'admin/pages'
+        1
+        ]
         );
     }
+
+    $this->session
+    ->set_flashdata(
+        'success',
+        'Halaman berhasil dibuat'
+    );
+
+    redirect(
+        'admin/pages'
+    );
+}
 
     /* ======================
        EDIT PAGE
@@ -189,118 +235,164 @@ extends MY_Controller
        UPDATE PAGE
     ====================== */
     public function update($id)
-    {
-        $page =
-        $this->Page_model
-        ->get_by_id(
-            $id
-        );
+{
+    $page =
+    $this->Page_model
+    ->get_by_id($id);
 
-        if(
-        !$page
-        ){
-            show_404();
-        }
+    if(!$page){
+        show_404();
+    }
 
-        $title =
-        trim(
-            $this->input
-            ->post(
-                'title'
-            )
-        );
+    $title =
+    trim(
+        $this->input
+        ->post('title')
+    );
 
+    $slug =
+    trim(
+        $this->input
+        ->post('slug')
+    );
+
+    if(empty($slug)){
         $slug =
-        trim(
-            $this->input
-            ->post(
-                'slug'
-            )
-        );
-
-        if(
-        empty(
-            $slug
-        )
-        ){
-            $slug =
-            url_title(
-                $title,
-                '-',
-                true
-            );
-        }
-
-        $data = [
-
-        'title' =>
-        $title,
-
-        'slug' =>
-        $slug,
-
-        'content' =>
-        $this->input
-        ->post(
-            'content'
-        ),
-
-        'status' =>
-        $this->input
-        ->post(
-            'status'
-        )
-        ? 1 : 0
-        ];
-
-        $this->Page_model
-        ->update(
-            $id,
-            $data
-        );
-
-        /* UPDATE MENU */
-        $menu =
-        $this->db
-        ->where(
-            'url',
-            $page->slug
-        )
-        ->get(
-            'menus'
-        )
-        ->row();
-
-        if(
-        $menu
-        ){
-            $this->db
-            ->where(
-                'id',
-                $menu->id
-            )
-            ->update(
-            'menus',
-            [
-            'title' =>
+        url_title(
             $title,
-
-            'url' =>
-            $slug
-            ]
-            );
-        }
-
-        $this->session
-        ->set_flashdata(
-            'success',
-            'Halaman berhasil diupdate'
-        );
-
-        redirect(
-            'admin/pages'
+            '-',
+            true
         );
     }
+
+    /* DEFAULT */
+    $thumbnail =
+    $page->thumbnail;
+
+    /* UPLOAD THUMBNAIL */
+    if(
+        isset(
+            $_FILES[
+                'thumbnail_file'
+            ]
+        )
+        &&
+        !empty(
+            $_FILES[
+                'thumbnail_file'
+            ]['name']
+        )
+    ){
+
+        $config['upload_path'] =
+        './uploads/media/';
+
+        $config['allowed_types'] =
+        'jpg|jpeg|png|webp';
+
+        $config['encrypt_name'] =
+        true;
+
+        $this->load->library(
+            'upload'
+        );
+
+        $this->upload
+        ->initialize(
+            $config
+        );
+
+        if(
+            $this->upload
+            ->do_upload(
+                'thumbnail_file'
+            )
+        ){
+
+            $upload =
+            $this->upload
+            ->data();
+
+            /* HAPUS FILE LAMA */
+            if(
+                !empty(
+                    $page->thumbnail
+                )
+                &&
+                file_exists(
+                    FCPATH .
+                    'uploads/media/' .
+                    $page->thumbnail
+                )
+            ){
+                unlink(
+                    FCPATH .
+                    'uploads/media/' .
+                    $page->thumbnail
+                );
+            }
+
+            $thumbnail =
+            $upload[
+                'file_name'
+            ];
+        }
+    }
+
+    $data = [
+
+    'title' =>
+    $title,
+
+    'slug' =>
+    $slug,
+
+    'content' =>
+    $this->input
+    ->post(
+        'content'
+    ),
+
+    'thumbnail' =>
+    $thumbnail,
+
+    'meta_title' =>
+    $this->input
+    ->post(
+        'meta_title'
+    ),
+
+    'meta_description' =>
+    $this->input
+    ->post(
+        'meta_description'
+    ),
+
+    'status' =>
+    $this->input
+    ->post(
+        'status'
+    )
+    ? 1 : 0
+
+    ];
+
+    $this->Page_model
+    ->update(
+        $id,
+        $data
+    );
+
+    $this->session
+    ->set_flashdata(
+        'success',
+        'Halaman berhasil diupdate'
+    );
+
+    redirect(
+        'admin/pages'
+    );
+}
 
     /* ======================
        DELETE PAGE

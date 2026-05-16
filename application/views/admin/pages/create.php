@@ -61,7 +61,8 @@ Kembali
 <form action="<?= base_url(
 'admin/pages/store'
 ) ?>"
-method="POST">
+method="POST"
+enctype="multipart/form-data">
 <input type="hidden"
 name="<?= $this->security->get_csrf_token_name(); ?>"
 value="<?= $this->security->get_csrf_hash(); ?>">
@@ -353,8 +354,7 @@ placeholder="custom-class">
 <!-- FEATURE IMAGE -->
 <div class="card shadow-sm border-0 mb-3">
 
-<div class="card-header
-bg-white">
+<div class="card-header bg-white">
 
 <h5 class="mb-0">
 
@@ -366,15 +366,26 @@ Thumbnail Halaman
 
 <div class="card-body text-center">
 
-<img src="https://placehold.co/500x250?text=No+Image"
+<img
+src="https://placehold.co/500x250?text=No+Image"
 id="thumbnailPreview"
-class="img-fluid rounded mb-3">
+class="img-fluid rounded mb-3"
+style="
+width:100%;
+max-height:220px;
+object-fit:cover;
+">
 
-<input type="hidden"
-name="thumbnail"
-id="thumbnail">
+<input
+type="file"
+name="thumbnail_file"
+id="thumbnail_file"
+class="d-none"
+accept="image/*">
 
-<button type="button"
+<button
+type="button"
+id="chooseThumbnail"
 class="btn btn-outline-primary btn-block">
 
 <i class="fas fa-image"></i>
@@ -382,6 +393,12 @@ class="btn btn-outline-primary btn-block">
 Pilih Thumbnail
 
 </button>
+
+<small class="text-muted d-block mt-2">
+
+JPG, PNG, WEBP
+
+</small>
 
 </div>
 
@@ -509,6 +526,49 @@ $('#slugPreview')
 );
 
 });
+
+});
+
+</script>
+<script>
+
+/* PILIH THUMBNAIL */
+$('#chooseThumbnail').on(
+'click',
+function(){
+
+$('#thumbnail_file').click();
+
+});
+
+$('#thumbnail_file').on(
+'change',
+function(e){
+
+const file =
+e.target.files[0];
+
+if(file){
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(ev){
+
+$('#thumbnailPreview')
+.attr(
+'src',
+ev.target.result
+);
+
+};
+
+reader.readAsDataURL(
+file
+);
+
+}
 
 });
 

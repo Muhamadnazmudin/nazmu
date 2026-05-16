@@ -61,7 +61,8 @@ Kembali
 'admin/pages/update/' .
 $page->id
 ) ?>"
-method="POST">
+method="POST"
+enctype="multipart/form-data">
 <input type="hidden"
 name="<?= $this->security->get_csrf_token_name(); ?>"
 value="<?= $this->security->get_csrf_hash(); ?>">
@@ -142,6 +143,113 @@ id="summernote"><?= $page->content ?></textarea>
 
 <!-- RIGHT -->
 <div class="col-lg-4">
+    <!-- SEO -->
+<div class="card shadow-sm border-0 mb-3">
+
+<div class="card-header bg-white">
+
+<h5 class="mb-0">
+
+SEO Halaman
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="form-group">
+
+<label>
+
+Meta Title
+
+</label>
+
+<input
+type="text"
+name="meta_title"
+class="form-control"
+value="<?= $page->meta_title ?? '' ?>">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Meta Description
+
+</label>
+
+<textarea
+name="meta_description"
+class="form-control"
+rows="3"><?= $page->meta_description ?? '' ?></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- THUMBNAIL -->
+<div class="card shadow-sm border-0 mb-3">
+
+<div class="card-header bg-white">
+
+<h5 class="mb-0">
+
+Thumbnail Halaman
+
+</h5>
+
+</div>
+
+<div class="card-body text-center">
+
+<img
+src="<?= !empty($page->thumbnail)
+? base_url(
+'uploads/media/' .
+$page->thumbnail
+)
+: 'https://placehold.co/500x250?text=No+Image' ?>"
+id="thumbnailPreview"
+class="img-fluid rounded mb-3"
+style="
+width:100%;
+max-height:220px;
+object-fit:cover;
+">
+
+<input
+type="file"
+name="thumbnail_file"
+id="thumbnail_file"
+class="d-none"
+accept="image/*">
+
+<button
+type="button"
+id="chooseThumbnail"
+class="btn btn-outline-primary btn-block">
+
+<i class="fas fa-image"></i>
+
+Pilih Thumbnail
+
+</button>
+
+<small class="text-muted d-block mt-2">
+
+JPG, PNG, WEBP
+
+</small>
+
+</div>
+
+</div>
 
 <!-- PUBLISH -->
 <div class="card shadow-sm border-0 mb-3">
@@ -333,6 +441,49 @@ $('#slugPreview')
 );
 
 });
+
+});
+
+</script>
+<script>
+
+/* PILIH THUMBNAIL */
+$('#chooseThumbnail').on(
+'click',
+function(){
+
+$('#thumbnail_file').click();
+
+});
+
+$('#thumbnail_file').on(
+'change',
+function(e){
+
+const file =
+e.target.files[0];
+
+if(file){
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(ev){
+
+$('#thumbnailPreview')
+.attr(
+'src',
+ev.target.result
+);
+
+};
+
+reader.readAsDataURL(
+file
+);
+
+}
 
 });
 
