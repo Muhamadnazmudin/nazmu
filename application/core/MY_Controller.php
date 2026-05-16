@@ -13,6 +13,15 @@ extends CI_Controller
 
         /*
         |--------------------------------------------------------------------------
+        | Helper
+        |--------------------------------------------------------------------------
+        */
+        $this->load->helper(
+            'cookie'
+        );
+
+        /*
+        |--------------------------------------------------------------------------
         | Load Models
         |--------------------------------------------------------------------------
         */
@@ -28,7 +37,6 @@ extends CI_Controller
             'Category_model'
         );
 
-
         /*
         |--------------------------------------------------------------------------
         | Website Setting
@@ -37,7 +45,6 @@ extends CI_Controller
         $this->setting =
         $this->Setting_model
         ->get();
-
 
         /*
         |--------------------------------------------------------------------------
@@ -48,7 +55,6 @@ extends CI_Controller
         $this->Menu_model
         ->get_active();
 
-
         /*
         |--------------------------------------------------------------------------
         | Blog Categories
@@ -58,6 +64,69 @@ extends CI_Controller
         $this->Category_model
         ->get_all();
 
+        /*
+        |--------------------------------------------------------------------------
+        | Theme Logic
+        |--------------------------------------------------------------------------
+        */
+
+        /*
+        theme default admin
+        */
+        $admin_theme =
+            !empty(
+                $this->setting
+                ->public_theme
+            )
+            ? $this->setting
+            ->public_theme
+            : 'default';
+
+        /*
+        theme pilihan user
+        */
+        $user_theme =
+            get_cookie(
+                'public_theme'
+            );
+
+        /*
+        whitelist theme
+        */
+        $allowed_themes = [
+
+            'default',
+            'modern',
+            'dark',
+            'school'
+
+        ];
+
+        /*
+        priority:
+        user > admin > default
+        */
+        if(
+            !empty(
+                $user_theme
+            )
+            &&
+            in_array(
+                $user_theme,
+                $allowed_themes
+            )
+        ){
+
+            $active_theme =
+                $user_theme;
+
+        }
+        else{
+
+            $active_theme =
+                $admin_theme;
+
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -73,7 +142,10 @@ extends CI_Controller
             $menus,
 
             'blog_categories' =>
-            $blog_categories
+            $blog_categories,
+
+            'public_theme' =>
+            $active_theme
 
         ]);
     }

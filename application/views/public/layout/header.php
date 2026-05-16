@@ -304,7 +304,7 @@ rel="stylesheet">
 <link rel="stylesheet"
 href="<?= base_url(
 'assets/themes/' .
-($setting->active_theme
+($public_theme
 ?? 'default') .
 '/public.css'
 ) ?>">

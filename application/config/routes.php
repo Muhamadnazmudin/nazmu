@@ -272,6 +272,11 @@ $route['tutorial']
 $route['tutorial/(:any)']
 = 'tutorial/detail/$1';
 
+$route['theme/change/(:any)']
+= 'theme/change/$1';
+
+$route['theme/reset']
+= 'theme/reset';
 /* UNIVERSAL PAGE */
 /* HARUS PALING BAWAH */
 $route['(:any)']

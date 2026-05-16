@@ -264,7 +264,26 @@ $menu->target_blank
 <?php endforeach; ?>
 
 </ul>
+<!-- THEME SWITCHER -->
+<div class="theme-switcher">
 
+    <a href="<?= base_url('theme/change/default') ?>"
+       class="theme-dot theme-default"
+       title="Default"></a>
+
+    <a href="<?= base_url('theme/change/dark') ?>"
+       class="theme-dot theme-dark"
+       title="Dark"></a>
+
+    <a href="<?= base_url('theme/change/school') ?>"
+       class="theme-dot theme-school"
+       title="School"></a>
+
+    <a href="<?= base_url('theme/change/modern') ?>"
+       class="theme-dot theme-modern"
+       title="Modern"></a>
+
+</div>
 <!-- SEARCH -->
 <form class="d-flex"
 action="<?= base_url('search') ?>"
