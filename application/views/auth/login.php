@@ -170,7 +170,67 @@ font-size:13px;
 color:#9ca3af;
 margin-top:22px;
 }
+.login-alert{
+display:flex;
+align-items:center;
+gap:14px;
+padding:14px 18px;
+margin-bottom:22px;
+border-radius:18px;
+background:
+linear-gradient(
+135deg,
+rgba(239,68,68,.08),
+rgba(220,38,38,.04)
+);
+border:1px solid
+rgba(239,68,68,.15);
+animation:slideDown .25s ease;
+}
 
+.alert-circle{
+width:42px;
+height:42px;
+border-radius:50%;
+background:
+linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+box-shadow:
+0 8px 18px
+rgba(239,68,68,.25);
+}
+
+.alert-circle i{
+color:#fff;
+font-size:16px;
+}
+
+.alert-text{
+font-size:14px;
+font-weight:600;
+color:#b91c1c;
+line-height:1.5;
+}
+
+@keyframes slideDown{
+from{
+opacity:0;
+transform:
+translateY(-10px);
+}
+to{
+opacity:1;
+transform:
+translateY(0);
+}
+}
 @media(max-width:480px){
 
 .login-header{
@@ -239,7 +299,21 @@ alt="Logo">
 Login untuk masuk dashboard
 
 </p>
+<?php if ($this->session->flashdata('error')): ?>
 
+<div class="login-alert">
+
+    <div class="alert-circle">
+        <i class="fas fa-exclamation"></i>
+    </div>
+
+    <div class="alert-text">
+        <?= $this->session->flashdata('error'); ?>
+    </div>
+
+</div>
+
+<?php endif; ?>
 <?php
 $csrf = [
     'name' => $this->security->get_csrf_token_name(),
@@ -250,8 +324,8 @@ $csrf = [
 <form action="<?= base_url('auth/login') ?>" method="POST">
 
     <input type="hidden"
-           name="<?= $csrf['name']; ?>"
-           value="<?= $csrf['hash']; ?>">
+       name="<?= $this->security->get_csrf_token_name(); ?>"
+       value="<?= $this->security->get_csrf_hash(); ?>">
 
     <div class="input-group mb-3">
 

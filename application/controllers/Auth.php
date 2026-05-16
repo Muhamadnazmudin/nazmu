@@ -5,54 +5,84 @@ class Auth extends MY_Controller {
 
     public function index()
     {
-        $this->load->view('auth/login');
+        $this->load->view(
+            'auth/login'
+        );
     }
 
     public function login()
-{
-    $username = $this->input->post('username');
-    $password = $this->input->post('password');
+    {
+        $username = trim(
+            $this->input->post(
+                'username',
+                true
+            )
+        );
 
-    $user = $this->db
-        ->where('username', $username)
-        ->get('users')
-        ->row();
+        $password = $this->input->post(
+            'password'
+        );
 
-    if (!$user) {
-        echo "Username tidak ditemukan";
-        die;
+        $user = $this->db
+            ->where(
+                'username',
+                $username
+            )
+            ->get('users')
+            ->row();
+
+        // Username salah
+        if (!$user) {
+
+            $this->session->set_flashdata(
+                'error',
+                'Username tidak ditemukan.'
+            );
+
+            redirect('asup');
+        }
+
+        // Password salah
+        if (
+            !password_verify(
+                $password,
+                $user->password
+            )
+        ) {
+
+            $this->session->set_flashdata(
+                'error',
+                'Password yang dimasukkan salah.'
+            );
+
+            redirect('asup');
+        }
+
+        // Session login
+        $session = [
+
+            'id_user'   => $user->id,
+            'nama'      => $user->nama,
+            'username'  => $user->username,
+            'photo'     => $user->photo,
+            'logged_in' => true
+        ];
+
+        // Regenerate session
+        $this->session->sess_regenerate(TRUE);
+
+        // Simpan session
+        $this->session->set_userdata(
+            $session
+        );
+
+        redirect('admin');
     }
-
-    if (!password_verify($password, $user->password)) {
-        echo "Password salah";
-        die;
-    }
-
-    $session = [
-    'id_user' =>
-    $user->id,
-
-    'nama' =>
-    $user->nama,
-
-    'username' =>
-    $user->username,
-
-    'photo' =>
-    $user->photo,
-
-    'logged_in' =>
-    true
-];
-    $this->session->sess_regenerate(TRUE);
-    $this->session->set_userdata($session);
-
-    redirect('admin');
-}
 
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('login');
+
+        redirect('asup');
     }
 }
