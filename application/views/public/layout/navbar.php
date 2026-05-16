@@ -43,24 +43,14 @@ $setting->site_name
 
 <div>
 
-<div style="
-font-weight:700;
-font-size:18px;
-line-height:1.2;
-color:#111827;
-">
+<div class="site-title">
 
 <?= $setting->site_name
 ?? 'Website' ?>
 
 </div>
 
-<small style="
-font-size:11px;
-color:#6b7280;
-display:block;
-line-height:1;
-">
+<small class="site-tagline">
 
 <?= $setting->tagline
 ?? 'Website Modern' ?>

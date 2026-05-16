@@ -991,3 +991,17 @@ body {
 		font-size: 16px;
 	}
 }
+/* SITE BRAND */
+.site-title {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1.2;
+	color: inherit;
+}
+
+.site-tagline {
+	font-size: 11px;
+	display: block;
+	line-height: 1;
+	color: #6b7280;
+}
