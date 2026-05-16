@@ -409,7 +409,29 @@ Administrator
         </a>
     </li>
 
+    <li class="nav-item">
 
+<a href="<?= base_url(
+'admin/ads'
+) ?>"
+class="nav-link
+<?= uri_string()
+== 'admin/ads'
+? 'active'
+: '' ?>">
+
+<i class="nav-icon
+fas fa-ad"></i>
+
+<p>
+
+Ads Management
+
+</p>
+
+</a>
+
+</li>
     <!-- USER -->
     <li class="nav-header">
         USER MANAGEMENT

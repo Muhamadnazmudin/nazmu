@@ -198,6 +198,13 @@ $route['admin/tutorials/update/(:num)']
 $route['admin/tutorials/delete/(:num)']
 = 'admin/tutorials/delete/$1';
 
+/* ADS */
+$route['admin/ads']
+= 'admin/ads/index';
+
+$route['admin/ads/update']
+= 'admin/ads/update';
+
 /* BLOG */
 $route['blog/(:any)']
 = 'blog/detail/$1';

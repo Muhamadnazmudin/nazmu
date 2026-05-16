@@ -309,6 +309,21 @@ href="<?= base_url(
 '/public.css'
 ) ?>">
 
+<!-- GOOGLE ADSENSE AUTO ADS -->
+<?php if(
+$setting->ads_status
+==
+'active'
+&&
+!empty(
+$setting->adsense_auto
+)
+): ?>
+
+<?= $setting->adsense_auto ?>
+
+<?php endif; ?>
+
 <!-- CUSTOM HEADER SCRIPT -->
 <?php if(
 !empty(

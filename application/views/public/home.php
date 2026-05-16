@@ -1,5 +1,35 @@
 <?php $this->load->view('public/layout/header'); ?>
 <?php $this->load->view('public/layout/navbar'); ?>
+<?php if(
+$setting->ads_status
+==
+'active'
+&&
+!empty(
+$setting->ads_header
+)
+): ?>
+
+<div class="container
+mt-3 mb-3">
+
+<div class="card
+border-0
+shadow-sm">
+
+<div class="card-body
+text-center">
+
+<?= $setting
+->ads_header ?>
+
+</div>
+
+</div>
+
+</div>
+
+<?php endif; ?>
 
 <!-- HERO SLIDER -->
 <?php if(!empty($sliders)): ?>
@@ -358,6 +388,33 @@ Cari
 
 </div>
 
+<?php if(
+$setting->ads_status
+==
+'active'
+&&
+!empty(
+$setting->ads_sidebar
+)
+): ?>
+
+<div class="card
+border-0
+shadow-sm
+mb-4">
+
+<div class="card-body
+text-center">
+
+<?= $setting
+->ads_sidebar ?>
+
+</div>
+
+</div>
+
+<?php endif; ?>
+
 <!-- CATEGORY -->
 <div class="card border-0 shadow-sm mb-4">
 
@@ -583,6 +640,35 @@ height:200px;
 }
 
 </style>
+<?php if(
+$setting->ads_status
+==
+'active'
+&&
+!empty(
+$setting->ads_footer
+)
+): ?>
 
+<div class="container
+mb-4">
+
+<div class="card
+border-0
+shadow-sm">
+
+<div class="card-body
+text-center">
+
+<?= $setting
+->ads_footer ?>
+
+</div>
+
+</div>
+
+</div>
+
+<?php endif; ?>
 
 <?php $this->load->view('public/layout/footer'); ?>
