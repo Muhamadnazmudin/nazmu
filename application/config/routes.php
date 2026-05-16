@@ -222,14 +222,17 @@ $route['comment/store']
 = 'comment/store';
 
 
-$route['download-center'] =
-'download/index';
+$route['download-center']
+= 'download/index';
 
-$route['download-center/file/(:any)'] =
-'download/file/$1';
+$route['download-center/file/(:any)']
+= 'download/file/$1';
 
-$route['download-center/category/(:any)'] =
-'download/category/$1';
+$route['download-center/view/(:any)']
+= 'download/view/$1';
+
+$route['download-center/category/(:any)']
+= 'download/category/$1';
 
 /*
 |--------------------------------------------------------------------------

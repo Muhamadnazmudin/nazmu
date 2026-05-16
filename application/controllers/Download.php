@@ -124,4 +124,144 @@ $this->Download_category_model
             $data
         );
     }
+
+    public function view($slug)
+{
+    $file =
+        $this->Download_model
+        ->get_by_slug($slug);
+
+    if(!$file){
+        show_404();
+    }
+
+    /*
+    External URL
+    */
+    if(
+        $file->file_source
+        == 'external'
+    ){
+
+        redirect(
+            $file->external_url
+        );
+    }
+
+    /*
+    Local file
+    */
+    if(
+        empty(
+            $file->file_path
+        )
+    ){
+        show_404();
+    }
+
+    $file_url =
+        base_url(
+            $file->file_path
+        );
+
+    $ext =
+        strtolower(
+            pathinfo(
+                $file->file_path,
+                PATHINFO_EXTENSION
+            )
+        );
+
+    /*
+    PDF
+    */
+    if($ext == 'pdf'){
+
+        redirect(
+            $file_url
+        );
+    }
+
+    /*
+    OFFICE DOCUMENT
+    */
+    if(
+    in_array(
+        $ext,
+        [
+            'doc',
+            'docx',
+            'xls',
+            'xlsx',
+            'ppt',
+            'pptx'
+        ]
+    )
+){
+
+    /*
+    localhost -> buka langsung
+    */
+    if(
+        strpos(
+            base_url(),
+            'localhost'
+        ) !== false
+        ||
+        strpos(
+            base_url(),
+            '127.0.0.1'
+        ) !== false
+    ){
+
+        redirect(
+            $file_url
+        );
+    }
+
+    /*
+    hosting -> office viewer
+    */
+    $viewer =
+'https://view.officeapps.live.com/op/view.aspx?src='
+    .
+    urlencode(
+        $file_url
+    );
+
+    redirect(
+        $viewer
+    );
+}
+
+    /*
+    IMAGE
+    */
+    if(
+        in_array(
+            $ext,
+            [
+                'jpg',
+                'jpeg',
+                'png',
+                'webp'
+            ]
+        )
+    ){
+
+        redirect(
+            $file_url
+        );
+    }
+
+    /*
+    fallback
+    */
+    redirect(
+        site_url(
+            'download-center/file/' .
+            $slug
+        )
+    );
+}
 }

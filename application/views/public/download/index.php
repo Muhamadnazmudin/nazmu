@@ -371,20 +371,43 @@ $file->description
 </div>
 
 <!-- BTN -->
-<a href="<?= site_url(
-'download-center/file/' .
-$file->slug
-); ?>"
-class="btn
-btn-primary
-rounded-pill
-w-100">
+<div class="d-flex gap-2">
 
-<i class="fas fa-download me-1"></i>
+    <!-- VIEW -->
+    <a href="<?= site_url(
+        'download-center/view/' .
+        $file->slug
+    ); ?>"
+    target="_blank"
+    class="btn
+    btn-outline-primary
+    rounded-pill
+    w-50">
 
-Download
+        <i class="fas fa-eye me-1"></i>
 
-</a>
+        View
+
+    </a>
+
+    <!-- DOWNLOAD -->
+    <a href="<?= site_url(
+        'download-center/file/' .
+        $file->slug
+    ); ?>"
+    class="btn
+    btn-primary
+    rounded-pill
+    w-50">
+
+        <i class="fas fa-download me-1"></i>
+
+        Download
+
+    </a>
+
+</div>
+
 
 </div>
 
