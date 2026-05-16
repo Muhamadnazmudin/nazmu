@@ -309,8 +309,21 @@ $route['theme/change/(:any)']
 
 $route['theme/reset']
 = 'theme/reset';
+
+/*
+|--------------------------------------------------------------------------
+| Kontak / Request
+|--------------------------------------------------------------------------
+*/
+
+$route['kontak']
+= 'kontak/index';
+
+$route['kontak/send']
+= 'kontak/send';
+$route['testwa']
+= 'testwa/index';
 /* UNIVERSAL PAGE */
 /* HARUS PALING BAWAH */
 $route['(:any)']
 = 'page/view/$1';
-
