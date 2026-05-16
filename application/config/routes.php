@@ -205,6 +205,33 @@ $route['admin/ads']
 $route['admin/ads/update']
 = 'admin/ads/update';
 
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN SCRAP IJAZAH
+|--------------------------------------------------------------------------
+*/
+
+$route['admin/scrapijazah']
+=
+'admin/ScrapIjazah/index';
+
+$route['admin/scrapijazah/schools']
+=
+'admin/ScrapIjazah/schools';
+
+$route['admin/scrapijazah/logs']
+=
+'admin/ScrapIjazah/logs';
+
+$route['admin/scrapijazah/delete-school/(:num)']
+=
+'admin/ScrapIjazah/delete_school/$1';
+$route['admin/scrapijazah/delete_school/(:num)']
+=
+'admin/ScrapIjazah/delete_school/$1';
+
+
 /* BLOG */
 $route['blog/(:any)']
 = 'blog/detail/$1';
@@ -214,6 +241,8 @@ $route['category/(:any)']
 
 $route['articles']
 = 'articles/index';
+$route['artikel']
+= 'articles';
 
 $route['search']
 = 'search/index';
@@ -242,15 +271,15 @@ $route['download-center/category/(:any)']
 
 $route['scrap-ijazah']
 =
-'scrapijazah/index';
+'ScrapIjazah/index';
 
 $route['scrap-ijazah/process']
 =
-'scrapijazah/process';
+'ScrapIjazah/process';
 
 $route['scrap-ijazah/download']
 =
-'scrapijazah/download';
+'ScrapIjazah/download';
 
 /*
 |--------------------------------------------------------------------------
@@ -260,6 +289,9 @@ $route['scrap-ijazah/download']
 
 $route['sitemap.xml']
 = 'sitemap/index';
+
+$route['robots.txt']
+= 'robots/index';
 
 /*
 |--------------------------------------------------------------------------
