@@ -269,7 +269,48 @@ referrerpolicy="no-referrer-when-downgrade">
 <?php endif; ?>
 <hr class="my-4">
 
-<div class="text-center footer-copy">
+<!-- LEGAL PAGE -->
+<div class="text-center
+mb-3">
+
+<a href="<?= base_url(
+'privacy-policy'
+) ?>"
+class="text-decoration-none
+mx-2">
+
+Privacy Policy
+
+</a>
+
+|
+
+<a href="<?= base_url(
+'disclaimer'
+) ?>"
+class="text-decoration-none
+mx-2">
+
+Disclaimer
+
+</a>
+
+|
+
+<a href="<?= base_url(
+'terms-conditions'
+) ?>"
+class="text-decoration-none
+mx-2">
+
+Terms & Conditions
+
+</a>
+
+</div>
+
+<div class="text-center
+footer-copy">
 
 <?= !empty(
 $setting->copyright
@@ -302,5 +343,7 @@ $setting->footer_script
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
